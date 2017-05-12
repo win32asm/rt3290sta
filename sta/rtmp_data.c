@@ -279,8 +279,6 @@ VOID STAHandleRxDataFrame(
 	MAC_TABLE_ENTRY *pEntry = NULL;
 	UCHAR FromWhichBSSID = BSS0;
 	UCHAR UserPriority = 0;
-	UCHAR OldPwrMgmt = PWR_ACTIVE;
-	FRAME_CONTROL *pFmeCtrl = &pHeader->FC;
 
 	if ((pHeader->FC.FrDs == 1) && (pHeader->FC.ToDs == 1)) {
 #ifdef CLIENT_WDS
@@ -714,7 +712,7 @@ VOID STAHandleRxMgmtFrame(
 	UCHAR MinSNR = 0;
 
 	do {
-
+		UCHAR uRSSI2;
 
 		/* check if need to resend PS Poll when received packet with MoreData = 1 */
 		if ((RtmpPktPmBitCheck(pAd) == TRUE)
@@ -762,8 +760,6 @@ VOID STAHandleRxMgmtFrame(
 			break;
 		}
 
-
-				UCHAR uRSSI2;
 				if (IS_RT3290(pAd))
 				{
 					uRSSI2 = (UCHAR)pRxWI->SNR2;

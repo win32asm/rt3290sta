@@ -111,7 +111,7 @@ typedef struct usb_ctrlrequest devctrlrequest;
 #ifdef CONFIG_STA_SUPPORT
 #ifdef RTMP_MAC_PCI
 #define STA_PROFILE_PATH			"/etc/Wireless/RT2860STA/RT2860STA.dat"
-#define STA_DRIVER_VERSION			"2.6.0.0_rev1"
+#define STA_DRIVER_VERSION			"2.6.0.0_rev1vb"
 #ifdef MULTIPLE_CARD_SUPPORT
 #define CARD_INFO_PATH			"/etc/Wireless/RT2860STA/RT2860STACard.dat"
 #endif /* MULTIPLE_CARD_SUPPORT */
@@ -270,8 +270,13 @@ typedef struct file* RTMP_OS_FD;
 typedef struct _OS_FS_INFO_
 {
 #if LINUX_VERSION_CODE < KERNEL_VERSION(3,13,0)
+#ifndef RHEL_RELEASE_CODE
 	int				fsuid;
 	int				fsgid;
+#elif RHEL_RELEASE_CODE >= RHEL_RELEASE_VERSION(7,3)
+	kuid_t				fsuid;
+	kgid_t				fsgid;
+#endif
 #else
 	kuid_t				fsuid;
 	kgid_t				fsgid;

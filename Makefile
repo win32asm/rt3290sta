@@ -188,11 +188,12 @@ CROSS_COMPILE = mips-wrs-linux-gnu-
 endif
 
 ifeq ($(PLATFORM),PC)
+KVER?=$(shell uname -r)
 # Linux 2.6
-LINUX_SRC = /lib/modules/$(shell uname -r)/build
+LINUX_SRC = /lib/modules/$(KVER)/build
 # Linux 2.4 Change to your local setting
 #LINUX_SRC = /usr/src/linux-2.4
-LINUX_SRC_MODULE = /lib/modules/$(shell uname -r)/kernel/drivers/net/wireless/
+LINUX_SRC_MODULE = /lib/modules/$(KVER)/kernel/drivers/net/wireless/
 CROSS_COMPILE = 
 endif
 

@@ -3953,7 +3953,7 @@ INT RTMPQueryInformation(
 		case OID_802_11_CURRENTCHANNEL:
 			DBGPRINT(RT_DEBUG_TRACE, ("Query::OID_802_11_CURRENTCHANNEL \n"));
 			wrq->u.data.length = sizeof(UCHAR);
-			DBGPRINT(RT_DEBUG_TRACE, ("sizeof UCHAR=%d, channel=%d \n", sizeof(UCHAR), pAd->CommonCfg.Channel));
+			DBGPRINT(RT_DEBUG_TRACE, ("sizeof UCHAR=%d, channel=%d \n", (int)sizeof(UCHAR), pAd->CommonCfg.Channel));
 			Status = copy_to_user(wrq->u.data.pointer, &pAd->CommonCfg.Channel, wrq->u.data.length);
 			DBGPRINT(RT_DEBUG_TRACE, ("Status=%d\n", Status));
 			break;
@@ -4896,7 +4896,7 @@ VOID RTMPIoctlShow(
             wrq->u.data.length = strlen(extra) + 1; /* 1: size of '\0' */
             break;
         case SHOW_DRVIER_VERION:
-            snprintf(extra, size, "Driver version-%s, %s %s\n", STA_DRIVER_VERSION);
+            snprintf(extra, size, "Driver version-%s\n", STA_DRIVER_VERSION);
             wrq->u.data.length = strlen(extra) + 1; /* 1: size of '\0' */
             break;
 #ifdef DOT11_N_SUPPORT
@@ -7217,7 +7217,7 @@ RtmpIoctl_rt_private_get_statistics(
 	}
 
 #if defined(BT_COEXISTENCE_SUPPORT) || defined(RT3290)
-sprintf(extra+strlen(extra), "pAd->NicConfig3.field.CoexAnt == 0x%x\n\n",pAd->NicConfig3);
+sprintf(extra+strlen(extra), "pAd->NicConfig3.word == 0x%x\n\n",pAd->NicConfig3.word);
 if (pAd->NicConfig3.field.CoexAnt == TRUE)
 sprintf(extra+strlen(extra), "pAd->NicConfig3.field.CoexAnt == TRUE\n\n");
 else

@@ -1,5 +1,6 @@
 include $(RT28xx_DIR)/os/linux/config.mk
 
+KVER?=$(shell uname -r)
 
 #ifdef CONFIG_STA_SUPPORT
 ifeq ($(RT28xx_MODE), STA)
@@ -87,11 +88,11 @@ endif
 install:
 	install -d $(LINUX_SRC_MODULE)
 	install -m 644 -c $(addsuffix .o,$(MOD_NAME)) $(LINUX_SRC_MODULE)
-	/sbin/depmod -a ${shell uname -r}
+	/sbin/depmod -a $(KVER)
 
 uninstall:
 	rm -rf $(addprefix $(LINUX_SRC_MODULE),$(addsuffix .o,$(MOD_NAME)))
-	/sbin/depmod -a ${shell uname -r}
+	/sbin/depmod -a $(KVER)
 
 # Declare the contents of the .PHONY variable as phony.  We keep that
 # # information in a variable so we can use it in if_changed and friends.

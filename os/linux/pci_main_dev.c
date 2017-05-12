@@ -296,7 +296,7 @@ static INT    rt2860_probe(
 	VOID 				*pAd = NULL;
 	struct  net_device	*net_dev;
 	PVOID				handle;
-	PSTRING				print_name;
+	const STRING				* print_name;
 	ULONG				csr_addr;
 	INT rv = 0;
 	RTMP_OS_NETDEV_OP_HOOK	netDevHook;

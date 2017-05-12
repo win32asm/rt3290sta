@@ -460,13 +460,6 @@ INT RtmpAsicSendCommandToMcu(
 
 #ifdef CONFIG_STA_SUPPORT
 #ifdef PCIE_PS_SUPPORT
-	ULONG	Configuration;
-	ULONG	offset;
-#endif /* PCIE_PS_SUPPORT */
-#endif /* CONFIG_STA_SUPPORT */
-
-#ifdef CONFIG_STA_SUPPORT
-#ifdef PCIE_PS_SUPPORT
 
 #ifdef RT3290
 	if (IS_RT3290(pAd))

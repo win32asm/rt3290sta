@@ -159,7 +159,7 @@ int rt28xx_init(
 	{
 		PLL_CTRL_STRUC PllCtrl;
 		RTMP_IO_READ32(pAd, PLL_CTRL, &PllCtrl.word);
-		DBGPRINT(RT_DEBUG_OFF,("PllCtrl:0x%x\n",PllCtrl.word));
+		DBGPRINT(RT_DEBUG_OFF,("PllCtrl:0x%lx\n",PllCtrl.word));
 		PllCtrl.field.VCO_FIXED_CURRENT_CONTROL = 0x1;			
 		RTMP_IO_WRITE32(pAd, PLL_CTRL, PllCtrl.word);
 	}
@@ -174,9 +174,9 @@ int rt28xx_init(
     	if (OPSTATUS_TEST_FLAG(pAd, fOP_STATUS_DOZE) &&
         	OPSTATUS_TEST_FLAG(pAd, fOP_STATUS_ADVANCE_POWER_SAVE_PCIE_DEVICE))
     	{
-    		printk("rt28xx_init AsicForceWakeup\n");
-        	AUTO_WAKEUP_STRUC AutoWakeupCfg;
-			AsicForceWakeup(pAd, TRUE);
+		AUTO_WAKEUP_STRUC AutoWakeupCfg;
+		printk("rt28xx_init AsicForceWakeup\n");
+		AsicForceWakeup(pAd, TRUE);
         	AutoWakeupCfg.word = 0;
 	    	RTMP_IO_WRITE32(pAd, AUTO_WAKEUP_CFG, AutoWakeupCfg.word);
         	OPSTATUS_CLEAR_FLAG(pAd, fOP_STATUS_DOZE);

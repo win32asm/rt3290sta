@@ -540,8 +540,6 @@ BOOLEAN  RTMPFreeTXDUponTxDmaDone(
 	TXD_STRUC	TxD, *pOriTxD;
 	/*ULONG		IrqFlags;*/
 	BOOLEAN			bReschedule = FALSE;
-	UINT8 TXWISize = pAd->chipCap.TXWISize;
-
 
 	ASSERT(QueIdx < NUM_OF_TX_RING);
 	if (QueIdx >= NUM_OF_TX_RING)
@@ -735,7 +733,6 @@ VOID	RTMPHandleMgmtRingDmaDoneInterrupt(
 /*	int 		 i;*/
 	UCHAR	FREE = 0;
 	PRTMP_MGMT_RING pMgmtRing = &pAd->MgmtRing;
-	UINT8 TXWISize = pAd->chipCap.TXWISize;
 
 	NdisAcquireSpinLock(&pAd->MgmtRingLock);
 

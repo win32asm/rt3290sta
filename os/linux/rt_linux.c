@@ -5282,4 +5282,6 @@ VOID RtmpOsTaskWakeUp(IN RTMP_OS_TASK * pTask) {
 
 #endif /* OS_ABL_FUNC_SUPPORT */
 
+MODULE_LICENSE("Proprietary");
+
 /* End of rt_linux.c */

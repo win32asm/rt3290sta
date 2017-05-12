@@ -60,7 +60,7 @@ typedef VOID	pregs;
 #ifdef CONFIG_STA_SUPPORT
 #ifdef RTMP_MAC_PCI
 #define STA_PROFILE_PATH			"/etc/Wireless/RT2860STA/RT2860STA.dat"
-#define STA_DRIVER_VERSION			"2.6.0.0_rev1"
+#define STA_DRIVER_VERSION			"2.6.0.0_rev1vb"
 #ifdef MULTIPLE_CARD_SUPPORT
 #define CARD_INFO_PATH			"/etc/Wireless/RT2860STA/RT2860STACard.dat"
 #endif /* MULTIPLE_CARD_SUPPORT */
